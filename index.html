@@ -38,12 +38,16 @@
             box-sizing: border-box;
         }
 
+        html {
+            font-size: 18px;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             color: var(--text-primary);
             background: var(--bg-base);
             line-height: 1.7;
-            font-size: 15px;
+            font-size: 0.9rem;
             -webkit-font-smoothing: antialiased;
         }
 
@@ -53,7 +57,7 @@
             padding: 60px 24px 80px;
         }
 
-        @media (max-width: 768px) {
+        @media screen and (max-width: 768px) {
             .page-wrapper {
                 padding: 40px 24px 60px;
             }
@@ -83,7 +87,7 @@
             align-items: flex-start;
         }
 
-        @media (max-width: 768px) {
+        @media screen and (max-width: 768px) {
             .header-content {
                 flex-direction: column;
                 align-items: center;
@@ -135,7 +139,7 @@
             gap: 16px;
         }
 
-        @media (max-width: 768px) {
+        @media screen and (max-width: 768px) {
             .contact-email {
                 text-align: center;
             }
@@ -200,7 +204,7 @@
         }
 
         .career-item {
-            padding: 12px 0;
+            padding: 14px 0;
             border-bottom: 1px solid var(--border);
         }
 
@@ -217,12 +221,16 @@
         .career-info {
             display: flex;
             align-items: baseline;
-            gap: 12px;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
-        .career-company-group {
+        .career-meta {
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 10px;
+            margin-bottom: 2px;
         }
 
         .career-company {
@@ -235,17 +243,23 @@
             font-size: 0.8rem;
             font-weight: 400;
             color: var(--text-muted);
-            margin-top: -2px;
         }
 
         .career-company-en a {
             color: var(--text-muted);
             text-decoration: none;
+            white-space: nowrap;
         }
 
         .career-company-en a:hover {
             color: var(--text-primary);
-            text-decoration: underline;
+        }
+
+        .career-company-en i {
+            font-size: 0.65rem;
+            margin-left: 1px;
+            vertical-align: 1px;
+            opacity: 0.7;
         }
 
         .career-position {
@@ -258,14 +272,14 @@
             color: var(--text-muted);
         }
 
-        .career-badge {
-            font-size: 0.8rem;
+        .career-tag {
+            font-size: 0.75rem;
+            line-height: 1.6;
             color: var(--text-secondary);
             background: var(--bg-subtle);
-            padding: 2px 8px;
+            padding: 1px 7px;
             border-radius: 4px;
-            display: inline-block;
-            margin-top: 6px;
+            white-space: nowrap;
         }
 
         .career-desc {
@@ -275,16 +289,16 @@
             word-break: keep-all;
         }
 
-        @media (max-width: 768px) {
+        @media screen and (max-width: 768px) {
+            /* 태그 … 영문명 / 회사명·직급 / 기간 3줄 구성 */
             .career-row {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 4px;
+                gap: 2px;
             }
 
             .career-info {
-                flex-direction: column;
-                gap: 2px;
+                gap: 8px;
             }
         }
 
@@ -419,10 +433,29 @@
             line-height: 1.2;
         }
 
+        .project-period {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
         .content-period {
+            display: none;
             font-size: 0.75rem;
             color: var(--text-muted);
             margin-bottom: 12px;
+        }
+
+        @media screen and (max-width: 768px) {
+            /* 좁은 화면에서는 헤더 대신 본문 상단에 기간 표시 */
+            .project-period {
+                display: none;
+            }
+
+            .content-period {
+                display: block;
+            }
         }
 
         .toggle-icon {
@@ -537,7 +570,7 @@
             gap: 8px;
         }
 
-        @media (max-width: 768px) {
+        @media screen and (max-width: 768px) {
             .education-item:not(.has-desc),
             .education-row {
                 flex-direction: column;
@@ -579,6 +612,10 @@
         }
 
         @media print {
+            @page {
+                margin: 15mm 18mm;
+            }
+
             .project-content {
                 max-height: none !important;
                 padding: 12px !important;
@@ -656,62 +693,62 @@
 
         <div class="career-list">
             <div class="career-item">
+                <div class="career-meta">
+                    <span class="career-tag">AI 서비스/솔루션</span>
+                    <span class="career-company-en"><a href="https://hsw.io.kr" target="_blank" rel="noopener noreferrer">HSW <i class="fas fa-up-right-from-square"></i></a></span>
+                </div>
                 <div class="career-row">
                     <div class="career-info">
-                        <div class="career-company-group">
-                            <span class="career-company">에이치에스더블유</span>
-                            <span class="career-company-en">HSW</span>
-                        </div>
+                        <span class="career-company">에이치에스더블유</span>
                         <span class="career-position">대표</span>
                     </div>
                     <span class="career-period">2026.03 ~ 현재</span>
                 </div>
-                <span class="career-badge">AI 서비스/솔루션</span>
                 <p class="career-desc">AI 기술을 활용한 서비스와 솔루션을 기획하고 개발하며,<br>실제 문제를 해결하여 가치를 줄 수 있는 제품을 만들어가고 있습니다.</p>
             </div>
 
             <div class="career-item">
+                <div class="career-meta">
+                    <span class="career-tag">통합 주문/결제 플랫폼</span>
+                    <span class="career-company-en"><a href="https://whiteblock.co" target="_blank" rel="noopener noreferrer">Whiteblock <i class="fas fa-up-right-from-square"></i></a></span>
+                </div>
                 <div class="career-row">
                     <div class="career-info">
-                        <div class="career-company-group">
-                            <span class="career-company">주식회사 화이트블록</span>
-                            <span class="career-company-en"><a href="https://whiteblock.co" target="_blank" rel="noopener noreferrer">Whiteblock</a></span>
-                        </div>
+                        <span class="career-company">주식회사 화이트블록</span>
                         <span class="career-position">CTO</span>
                     </div>
                     <span class="career-period">2018.08 ~ 현재</span>
                 </div>
-                <span class="career-badge">통합 주문/결제 플랫폼</span>
                 <p class="career-desc">초기 스타트업의 CTO로서 성장하는 서비스의 운영과 트래픽 대처, 다양하고 복잡한 문제를 해결한 경험을 쌓았습니다.<br>주로 Tech Lead, 관리자의 역할을 수행하나 기획, 디자인, 마케팅, 영업 등 필요한 부분이 있거나 문제가 있는 경우 직무나 영역을 넘나들며 해결사 역할을 하고 있습니다.</p>
             </div>
 
             <div class="career-item">
+                <div class="career-meta">
+                    <span class="career-tag">클라우드 파일 스토리지 솔루션</span>
+                    <span class="career-company-en"><a href="https://asdtech.cy" target="_blank" rel="noopener noreferrer">ASD Korea <i class="fas fa-up-right-from-square"></i></a></span>
+                </div>
                 <div class="career-row">
                     <div class="career-info">
-                        <div class="career-company-group">
-                            <span class="career-company">(주)에이에스디코리아</span>
-                            <span class="career-company-en"><a href="https://asdtech.cy" target="_blank" rel="noopener noreferrer">ASD Korea</a></span>
-                        </div>
+                        <span class="career-company">(주)에이에스디코리아</span>
                         <span class="career-position">Backend Engineer</span>
                     </div>
                     <span class="career-period">2016.08 ~ 2018.08</span>
                 </div>
-                <span class="career-badge">클라우드 파일 스토리지 솔루션</span>
                 <p class="career-desc">백엔드 개발과 DevOps 관련 업무, 프로젝트 매니징 역량을 키웠습니다.<br>글로벌 스타트업의 한국 법인에 초기 합류하여 온프레미스 제품을 다수의 대기업에 공급하는 성과를 거두었으며,<br>SaaS 서비스의 고도화를 통해 시장에 성공적으로 안착시켰습니다.</p>
             </div>
 
             <div class="career-item">
+                <div class="career-meta">
+                    <span class="career-tag">게스트하우스, 숙박 O2O 서비스</span>
+                    <span class="career-company-en"><a href="https://jienem.com" target="_blank" rel="noopener noreferrer">Jinem <i class="fas fa-up-right-from-square"></i></a></span>
+                </div>
                 <div class="career-row">
                     <div class="career-info">
-                        <div class="career-company-group">
-                            <span class="career-company">(주)지냄</span>
-                            <span class="career-company-en"><a href="https://jienem.com" target="_blank" rel="noopener noreferrer">Jinem</a></span>
-                        </div>
+                        <span class="career-company">(주)지냄</span>
                         <span class="career-position">Frontend Engineer</span>
                     </div>
                     <span class="career-period">2016.01 ~ 2016.07</span>
                 </div>
-                <span class="career-badge">게스트하우스, 숙박 O2O 서비스</span>
                 <p class="career-desc">숙박 시장과 O2O 서비스에 대한 경험을 쌓았으며,<br>프론트엔드 개발과 사내 업무 자동화 도구를 개발하여 팀 생산성 향상에 기여했습니다.</p>
             </div>
         </div>
@@ -842,8 +879,9 @@
                     <h3 class="project-title">
                         엑시스 <span class="project-title-en">AXIS</span>
                     </h3>
-                    <span class="project-brief">AX 전환, AI 운영 거버넌스 솔루션</span>
+                    <span class="project-brief">AX 전환, AI 운영 솔루션</span>
                 </div>
+                <span class="project-period">2026.04 ~ 현재</span>
                 <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
             </div>
             <div class="project-content">
@@ -870,6 +908,7 @@
                     </h3>
                     <span class="project-brief">AI 교육 플랫폼</span>
                 </div>
+                <span class="project-period">2026.08 ~ 현재</span>
                 <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
             </div>
             <div class="project-content">
@@ -896,6 +935,7 @@
                     </h3>
                     <span class="project-brief">AI 창작 스튜디오</span>
                 </div>
+                <span class="project-period">2026.08 ~ 현재</span>
                 <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
             </div>
             <div class="project-content">
@@ -924,6 +964,7 @@
                     </h3>
                     <span class="project-brief">통합 주문/결제 플랫폼</span>
                 </div>
+                <span class="project-period">2022.01 ~ 현재</span>
                 <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
             </div>
             <div class="project-content">
@@ -952,6 +993,7 @@
                     </h3>
                     <span class="project-brief">모바일 주문 결제 서비스</span>
                 </div>
+                <span class="project-period">2019.01 ~ 2020.08</span>
                 <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
             </div>
             <div class="project-content">
@@ -976,6 +1018,7 @@
                     <h3 class="project-title">블록체인 기반 주문 결제 시스템</h3>
                     <span class="project-brief">자기주권신원 통합인증 결제시스템</span>
                 </div>
+                <span class="project-period">2019.03 ~ 2020.06</span>
                 <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
             </div>
             <div class="project-content">
@@ -1007,10 +1050,11 @@
                     <h3 class="project-title">ETRI 합의 알고리즘 POC</h3>
                     <span class="project-brief">PON, BADA 알고리즘</span>
                 </div>
+                <span class="project-period">2019.01 ~ 2019.12</span>
                 <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
             </div>
             <div class="project-content">
-                <div class="content-period">2019</div>
+                <div class="content-period">2019.01 ~ 2019.12</div>
                 <div class="content-section">
                     <h4 class="content-label">설명</h4>
                     <p class="content-text">한국전자통신연구원(ETRI)과 함께 PON과 BADA 알고리즘의 구동과 동작에 대한 POC를 진행했습니다.</p>
@@ -1039,6 +1083,7 @@
                     </h3>
                     <span class="project-brief">엔터프라이즈 프라이빗 블록체인 솔루션</span>
                 </div>
+                <span class="project-period">2019.03 ~ 2020.12</span>
                 <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
             </div>
             <div class="project-content">
@@ -1073,6 +1118,7 @@
                     </h3>
                     <span class="project-brief">블록체인 기반 증명서 유통 추적 시스템</span>
                 </div>
+                <span class="project-period">2018.08 ~ 2020.03</span>
                 <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
             </div>
             <div class="project-content">
@@ -1107,6 +1153,7 @@
                     </h3>
                     <span class="project-brief">클라우드 파일 스토리지 SaaS</span>
                 </div>
+                <span class="project-period">2016.09 ~ 2018.08</span>
                 <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
             </div>
             <div class="project-content">
@@ -1137,6 +1184,7 @@
                     </h3>
                     <span class="project-brief">넥슨 그룹사 On-premise 프로젝트</span>
                 </div>
+                <span class="project-period">2017.02 ~ 2018.03</span>
                 <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
             </div>
             <div class="project-content">
@@ -1165,6 +1213,7 @@
                     </h3>
                     <span class="project-brief">CJ 그룹사 On-premise 프로젝트</span>
                 </div>
+                <span class="project-period">2018.02 ~ 2018.08</span>
                 <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
             </div>
             <div class="project-content">
@@ -1193,6 +1242,7 @@
                     </h3>
                     <span class="project-brief">KT 그룹웨어 솔루션 제공</span>
                 </div>
+                <span class="project-period">2017.05 ~ 2017.10</span>
                 <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
             </div>
             <div class="project-content">
@@ -1217,6 +1267,7 @@
                     <h3 class="project-title">온라인 오피스 연동</h3>
                     <span class="project-brief">MS o365, 한컴 웹오피스, OnlyOffice 연동</span>
                 </div>
+                <span class="project-period">2016 ~ 2017</span>
                 <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
             </div>
             <div class="project-content">
@@ -1243,6 +1294,7 @@
                     <h3 class="project-title">결제, 정산 시스템 구축</h3>
                     <span class="project-brief">SaaS 서비스 결제 시스템 구축</span>
                 </div>
+                <span class="project-period">2018.07 ~ 2018.08</span>
                 <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
             </div>
             <div class="project-content">
@@ -1269,6 +1321,7 @@
                     <h3 class="project-title">로컬 개발환경 구성</h3>
                     <span class="project-brief">로컬 개발환경 구성 및 문서화</span>
                 </div>
+                <span class="project-period">2017.10 ~ 2017.12</span>
                 <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
             </div>
             <div class="project-content">
@@ -1308,6 +1361,7 @@
                     </h3>
                     <span class="project-brief">게스트하우스 관리 서비스</span>
                 </div>
+                <span class="project-period">2016.03 ~ 2016.06</span>
                 <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
             </div>
             <div class="project-content">
@@ -1336,6 +1390,7 @@
                     </h3>
                     <span class="project-brief">게스트하우스 숙박 O2O 서비스</span>
                 </div>
+                <span class="project-period">2016.01 ~ 2016.06</span>
                 <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
             </div>
             <div class="project-content">
@@ -1367,10 +1422,11 @@
                     <h3 class="project-title">DOT</h3>
                     <span class="project-brief">대학 성과관리 솔루션</span>
                 </div>
+                <span class="project-period">2025.06 ~ 2026.06</span>
                 <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
             </div>
             <div class="project-content">
-                <div class="content-period">2025.06 ~ 2025.12</div>
+                <div class="content-period">2025.06 ~ 2026.06</div>
                 <div class="content-section">
                     <h4 class="content-label">설명</h4>
                     <p class="content-text">대학에서 사용되는 성과, 일정관리 솔루션을 수주하여 프로젝트 기획, 디자인, 개발, 운영을 맡아 진행했습니다.</p>
@@ -1394,6 +1450,7 @@
                     </h3>
                     <span class="project-brief">SaaS 자동화 서비스</span>
                 </div>
+                <span class="project-period">2021.10 ~ 2022.02</span>
                 <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
             </div>
             <div class="project-content">
@@ -1419,6 +1476,7 @@
                     <h3 class="project-title">세컨핸즈</h3>
                     <span class="project-brief">의류 중고거래 앱</span>
                 </div>
+                <span class="project-period">2021.10 ~ 2021.12</span>
                 <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
             </div>
             <div class="project-content">
